@@ -4,4 +4,7 @@ button {
   margin: 2px 1px;
 }
 
+.clear-all {
+  min-width: 106px;
+}
 
