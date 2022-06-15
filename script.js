@@ -28,44 +28,49 @@ function operate(x, operator, y) {
   }
 }
 
-let display = "";
+let firstOperand = "";
+let secondOperand = "";
+let operator = "";
+let display = ""
 
-numbers = document.getElementsByClassName("number");
+const numbers = document.getElementsByClassName("number");
 for (const button of numbers) {
   button.addEventListener("click", function() {
-    display += button.innerHTML;
-    console.log(display)
+    if (operator === "") {
+      firstOperand += button.innerHTML
+      display = firstOperand
+      console.log(display)
+    } else if (operator != "") {
+      secondOperand += button.innerHTML
+      display = `${firstOperand} ${operator} ${secondOperand}`
+      console.log(display)
+    }
   })
 }
 
-operators = document.getElementsByClassName("operator");
+const operators = document.getElementsByClassName("operator");
 for (const button of operators) {
   button.addEventListener("click", function() {
-    const operator = button.innerHTML;
-    display = `${display} ${operator} `;
+    operator = button.innerHTML;
+    display = `${firstOperand} ${operator}`
     console.log(display)
   })
 }
 
-function split(equation) {
-  if (equation.includes("+")) {
-    equation.split("+")
-  } else if (equation.includes("-")) {
-    equation.split("-")
-  } else if (equation.includes("x")) {
-    equation.split("x")
-  } else if (equation.includes("÷")) {
-    equation.split("÷")
-  } else {
-    return
-  }
-}
-
-equals = document.querySelector(".equals");
+const equals = document.querySelector(".equals");
 equals.addEventListener("click", function() {
-  const array = display.split(" ");
-  console.log(array);
-
-  console.log(operate(array[0], array[1], array[2]));
-  return operate(array[0], array[1], array[2])
+  result = operate(firstOperand, operator, secondOperand);
+  firstOperand = result;
+  secondOperand = "";
+  console.log(result);
 })
+
+const posToNeg = document.querySelector(".positiveToNegative");
+posToNeg.addEventListener("click", function() {
+  -Math.abs(firstOperand);
+  if (display.includes("+" || "-" || "x" || "÷")) {
+    -Math.abs(secondOperand);
+  }
+  console.log(display);
+})
+
