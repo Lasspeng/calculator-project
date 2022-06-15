@@ -8,3 +8,25 @@ button {
   min-width: 106px;
 }
 
+.equals {
+  min-width: 106px;
+}
+
+.display {
+  min-height: 40px;
+  min-width: 216px;
+  max-width: 216px;
+  margin: 5px;
+  padding: 3px;
+  font-size: 35px;
+  background-color: lightgrey;
+  border-radius: 2px;
+  border-color: grey;
+  text-align: right;
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
