@@ -23,6 +23,7 @@ button {
   border-radius: 2px;
   border-color: grey;
   text-align: right;
+  overflow: hidden;
 }
 
 #calculator {
